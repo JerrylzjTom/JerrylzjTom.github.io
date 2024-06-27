@@ -1286,7 +1286,7 @@ pre code {
   vertical-align: middle;
 }
 .links-of-author a::before {
-  background: #3dff95;
+  background: #cff;
   display: inline-block;
   margin-right: 3px;
   transform: translateY(-2px);
@@ -2699,7 +2699,7 @@ body {
   background-position: center;
 }
 .content-wrap {
-  opacity: 0.9;
+  opacity: 0.8;
 }
 .sidebar {
   opacity: 0.8;
@@ -2732,4 +2732,90 @@ span.exturl {
 }
 .posts-expand .post-meta time {
   cursor: url("/images/white_red_handwriting.cur"), auto;
+}
+.category-all-page .category-list-child {
+  padding-left: 25px;
+}
+.category-list-link:hover {
+  color: #ff4c00;
+  border-bottom: 1px solid #fc6423;
+  transition-duration: 0.2s;
+}
+.category-all-page a,
+.category-list-count {
+  color: #ffb18f;
+  font-size: 18px;
+}
+.category-all-page a,
+.category-list-link {
+  font-size: 18px;
+  color: #fc6423;
+  border-bottom: 1px solid rgba(153,153,153,0);
+}
+.category-all-page .category-list-count {
+  color: #ffb18f;
+  font-size: 16px;
+}
+.category-all-page .category-list-child a,
+.category-list-link {
+  font-size: 16px;
+  color: #4d4d4c;
+}
+.btn {
+  color: rgba(252,100,35,0.941);
+  background: rgba(252,255,255,0.1);
+  border: 2px solid rgba(252,100,35,0.941);
+}
+.btn:hover {
+  border-color: rgba(252,100,35,0.941);
+  color: #fff;
+  background: rgba(252,100,35,0.941);
+}
+.post-title-link:hover {
+  color: #fc6423;
+  transition-duration: 0.2s;
+}
+.posts-expand .post-title-link::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #fc6423;
+  visibility: hidden;
+  -webkit-transform: scaleX(0);
+  -moz-transform: scaleX(0);
+  -ms-transform: scaleX(0);
+  -o-transform: scaleX(0);
+  transform: scaleX(0);
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  transition-delay: 0s;
+}
+.posts-expand .post-eof {
+  margin: 80px auto 60px;
+  width: 100%;
+  height: 1px;
+  background: rgba(0,0,0,0);
+  border-bottom: 3px dashed rgba(65,105,225,0.3);
+}
+.posts-collapse .post {
+  color: #222;
+}
+.posts-collapse .post-title a,
+.posts-collapse .post-title span.exturl {
+  color: #555;
+}
+.posts-collapse .post-header {
+  border-bottom: 1px dashed #ffb18f;
+}
+.posts-collapse .post-header::before {
+  background: #ffb18f;
+}
+.page-archive .posts-collapse .archive-move-on {
+  background: #fc6423;
+}
+.posts-collapse .collection-title::before {
+  background: #ffb18f;
 }
