@@ -21,29 +21,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jerrylzjtom.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":330,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="专业书籍2024 CSAPP (reading) 汇编语言——王爽 (reading) Operating Systems: Threee Esay Pieces (to read) 图解TCP&#x2F;IP (to read) 计算机网络-自顶向下 (to read)  闲杂书籍2024 明朝那些事  趣说汉朝  小王子  1984  许三观卖血记  大学  中庸 (reading) 诗经 楚">
-<meta property="og:type" content="website">
+    <meta name="description" content="homework1 100% cpu 4 + io-run 1 + block 5 + io-done 1 总时间 11，cpu:5, io:6  交换顺序后，io阻塞期间，系统同时执行CPU工作，总时间为7。交换顺序可以有效利用系统资源。 系统执行完I&#x2F;O后执行CPU工作。 系统执行I&#x2F;O同时执行CPU工作。 当 I&#x2F;O 完成时， 发出它的进程不一定马上运行。相反，">
+<meta property="og:type" content="article">
 <meta property="og:title" content="page.title">
-<meta property="og:url" content="https://jerrylzjtom.github.io/%E9%98%85%E8%AF%BB%E6%B8%85%E5%8D%95/index.html">
+<meta property="og:url" content="https://jerrylzjtom.github.io/2024/07/03/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA-ostep-%E7%AC%94%E8%AE%B0/index.html">
 <meta property="og:site_name" content="杰瑞的小世界">
-<meta property="og:description" content="专业书籍2024 CSAPP (reading) 汇编语言——王爽 (reading) Operating Systems: Threee Esay Pieces (to read) 图解TCP&#x2F;IP (to read) 计算机网络-自顶向下 (to read)  闲杂书籍2024 明朝那些事  趣说汉朝  小王子  1984  许三观卖血记  大学  中庸 (reading) 诗经 楚">
+<meta property="og:description" content="homework1 100% cpu 4 + io-run 1 + block 5 + io-done 1 总时间 11，cpu:5, io:6  交换顺序后，io阻塞期间，系统同时执行CPU工作，总时间为7。交换顺序可以有效利用系统资源。 系统执行完I&#x2F;O后执行CPU工作。 系统执行I&#x2F;O同时执行CPU工作。 当 I&#x2F;O 完成时， 发出它的进程不一定马上运行。相反，">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2024-07-02T16:06:29.000Z">
-<meta property="article:modified_time" content="2024-07-02T16:34:11.299Z">
+<meta property="article:published_time" content="2024-07-03T12:26:25.000Z">
+<meta property="article:modified_time" content="2024-07-03T15:15:23.827Z">
 <meta property="article:author" content="Jerry-Lee">
 <meta property="article:tag" content="CS 国学 历史 诗词">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://jerrylzjtom.github.io/%E9%98%85%E8%AF%BB%E6%B8%85%E5%8D%95/">
+<link rel="canonical" href="https://jerrylzjtom.github.io/2024/07/03/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA-ostep-%E7%AC%94%E8%AE%B0/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":false,"lang":"en","comments":true,"permalink":"https://jerrylzjtom.github.io/%E9%98%85%E8%AF%BB%E6%B8%85%E5%8D%95/index.html","path":"阅读清单/index.html","title":"阅读清单"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jerrylzjtom.github.io/2024/07/03/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA-ostep-%E7%AC%94%E8%AE%B0/","path":"2024/07/03/操作系统导论-ostep-笔记/","title":"操作系统导论(Ostep)笔记"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>阅读清单 | 杰瑞的小世界
-</title>
+<title>操作系统导论(Ostep)笔记 | 杰瑞的小世界</title>
   
 
 
@@ -122,7 +121,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%93%E4%B8%9A%E4%B9%A6%E7%B1%8D"><span class="nav-number">1.</span> <span class="nav-text">专业书籍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2024"><span class="nav-number">1.1.</span> <span class="nav-text">2024</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%97%B2%E6%9D%82%E4%B9%A6%E7%B1%8D"><span class="nav-number">2.</span> <span class="nav-text">闲杂书籍</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2024-1"><span class="nav-number">2.1.</span> <span class="nav-text">2024</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#homework1"><span class="nav-number">1.</span> <span class="nav-text">homework1</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -208,53 +207,140 @@
 
     </div>
 
-    <div class="main-inner page posts-expand">
+    <div class="main-inner post posts-expand">
 
 
-    
-    
-    
-    <div class="post-block" lang="en"><header class="post-header">
+  
 
-<h1 class="post-title" itemprop="name headline">阅读清单
-</h1>
 
-<div class="post-meta-container">
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jerrylzjtom.github.io/2024/07/03/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA-ostep-%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/images.jpg">
+      <meta itemprop="name" content="Jerry-Lee">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杰瑞的小世界">
+      <meta itemprop="description" content="有匪君子，如切如磋，如琢如磨">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="操作系统导论(Ostep)笔记 | 杰瑞的小世界">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          操作系统导论(Ostep)笔记
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-07-03 20:26:25 / Modified: 23:15:23" itemprop="dateCreated datePublished" datetime="2024-07-03T20:26:25+08:00">2024-07-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
 </div>
 
-</header>
+        </div>
 
-      
-      
-      
-      <div class="post-body">
-          <h1 id="专业书籍"><a href="#专业书籍" class="headerlink" title="专业书籍"></a>专业书籍</h1><h2 id="2024"><a href="#2024" class="headerlink" title="2024"></a>2024</h2><ol>
-<li>CSAPP (reading)</li>
-<li>汇编语言——王爽 (reading)</li>
-<li>Operating Systems: Threee Esay Pieces (to read)</li>
-<li>图解TCP&#x2F;IP (to read)</li>
-<li>计算机网络-自顶向下 (to read)</li>
-</ol>
-<h1 id="闲杂书籍"><a href="#闲杂书籍" class="headerlink" title="闲杂书籍"></a>闲杂书籍</h1><h2 id="2024-1"><a href="#2024-1" class="headerlink" title="2024"></a>2024</h2><ol>
-<li>明朝那些事 </li>
-<li>趣说汉朝 </li>
-<li>小王子 </li>
-<li>1984 </li>
-<li>许三观卖血记 </li>
-<li>大学 </li>
-<li>中庸 (reading)</li>
-<li>诗经 楚辞(背诵中……)</li>
-<li>资治通鉴 (reading)</li>
+        <span title="post.wordcount">265 词 </span>
+        <span title="post.min2read">1 分钟 </span>
+
+
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h2 id="homework1"><a href="#homework1" class="headerlink" title="homework1"></a>homework1</h2><ol>
+<li>100%</li>
+<li>cpu 4 + io-run 1 + block 5 + io-done 1 总时间 11，cpu:5, io:6 </li>
+<li>交换顺序后，io阻塞期间，系统同时执行CPU工作，总时间为7。交换顺序可以有效利用系统资源。</li>
+<li>系统执行完I&#x2F;O后执行CPU工作。</li>
+<li>系统执行I&#x2F;O同时执行CPU工作。</li>
+<li>当 I&#x2F;O 完成时， 发出它的进程不一定马上运行。相反，当时运行的进程一直运行。</li>
+<li>CPU利用率显著提高。运行完一个刚刚完成I&#x2F;O的进程，可以有效利用I&#x2F;O阻塞时间，执行CPU工作。</li>
+<li>指令：-s 2 -l 3:50,10:100<ul>
+<li>-I -IO_RUN_IMMEDIATE：I&#x2F;O完成时，发出它的进程立刻运行io-done (Total time: 15)</li>
+<li>-I-IO_RUN_LATER：I&#x2F;O完成时，发出它的进程等待CPU工作完成后再运行。(Total time: 20)</li>
+<li>-S SWITCH_ON_IO：进行I&#x2F;O操作时，系统会切换到其他进程。(Total time: 20)</li>
+<li>-S SWITCH_ON_END：进行I&#x2F;O操作时，系统不会切换到其他进程。(Total time: 25)</li>
+</ul>
+</li>
 </ol>
 
-      </div>
-      
-      
-      
     </div>
 
     
     
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Jerry-Lee
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://jerrylzjtom.github.io/2024/07/03/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA-ostep-%E7%AC%94%E8%AE%B0/" title="操作系统导论(Ostep)笔记">https://jerrylzjtom.github.io/2024/07/03/操作系统导论-ostep-笔记/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/07/02/CSAPP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="prev" title="CSAPP学习笔记">
+                  <i class="fa fa-angle-left"></i> CSAPP学习笔记
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
 
 
 </div>

@@ -133,7 +133,7 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-count">4</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -205,6 +205,105 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jerrylzjtom.github.io/2024/07/03/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA-ostep-%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/images.jpg">
+      <meta itemprop="name" content="Jerry-Lee">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杰瑞的小世界">
+      <meta itemprop="description" content="有匪君子，如切如磋，如琢如磨">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 杰瑞的小世界">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/07/03/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA-ostep-%E7%AC%94%E8%AE%B0/" class="post-title-link" itemprop="url">操作系统导论(Ostep)笔记</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-07-03 20:26:25 / Modified: 23:15:23" itemprop="dateCreated datePublished" datetime="2024-07-03T20:26:25+08:00">2024-07-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" itemprop="url" rel="index"><span itemprop="name">操作系统</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+
+        <span title="post.wordcount">265 词 </span>
+        <span title="post.min2read">1 分钟 </span>
+
+
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h2 id="homework1"><a href="#homework1" class="headerlink" title="homework1"></a>homework1</h2><ol>
+<li>100%</li>
+<li>cpu 4 + io-run 1 + block 5 + io-done 1 总时间 11，cpu:5, io:6 </li>
+<li>交换顺序后，io阻塞期间，系统同时执行CPU工作，总时间为7。交换顺序可以有效利用系统资源。</li>
+<li>系统执行完I&#x2F;O后执行CPU工作。</li>
+<li>系统执行I&#x2F;O同时执行CPU工作。</li>
+<li>当 I&#x2F;O 完成时， 发出它的进程不一定马上运行。相反，当时运行的进程一直运行。</li>
+<li>CPU利用率显著提高。运行完一个刚刚完成I&#x2F;O的进程，可以有效利用I&#x2F;O阻塞时间，执行CPU工作。</li>
+<li>指令：-s 2 -l 3:50,10:100<ul>
+<li>-I -IO_RUN_IMMEDIATE：I&#x2F;O完成时，发出它的进程立刻运行io-done (Total time: 15)</li>
+<li>-I-IO_RUN_LATER：I&#x2F;O完成时，发出它的进程等待CPU工作完成后再运行。(Total time: 20)</li>
+<li>-S SWITCH_ON_IO：进行I&#x2F;O操作时，系统会切换到其他进程。(Total time: 20)</li>
+<li>-S SWITCH_ON_END：进行I&#x2F;O操作时，系统不会切换到其他进程。(Total time: 25)</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
