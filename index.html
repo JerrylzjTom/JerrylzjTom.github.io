@@ -133,13 +133,13 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
@@ -205,6 +205,138 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jerrylzjtom.github.io/2024/07/19/Load-kernel/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/images.jpg">
+      <meta itemprop="name" content="Jerry-Lee">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杰瑞的小世界">
+      <meta itemprop="description" content="有匪君子，如切如磋，如琢如磨">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | 杰瑞的小世界">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/07/19/Load-kernel/" class="post-title-link" itemprop="url">Load Kernel</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-07-19 23:11:37 / Modified: 23:16:57" itemprop="dateCreated datePublished" datetime="2024-07-19T23:11:37+08:00">2024-07-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Operator-System/" itemprop="url" rel="index"><span itemprop="name">Operator System</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+
+        <span title="post.wordcount">806 词 </span>
+        <span title="post.min2read">5 分钟 </span>
+
+
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <h3 id="BIOS"><a href="#BIOS" class="headerlink" title="BIOS"></a>BIOS</h3><p>It is a firmware that provide the necessary instruction for the computer to perform basic functions such as hardware initialization.</p>
+<h4 id="Functions-of-the-BIOS"><a href="#Functions-of-the-BIOS" class="headerlink" title="Functions of the BIOS"></a>Functions of the BIOS</h4><ol>
+<li><strong>Power-On Self-Test (POST):</strong><br> When you turn on your computer, the BIOS performs a POST to check that all the necessary hardware components (like memory, keyboard, and storage devices) are functioning correctly.</li>
+<li><strong>Bootloader Execution:</strong><br>  After the POST, the BIOS looks for a bootable device (like a hard drive, SSD, USB drive, or CD&#x2F;DVD) and loads the bootloader from the bootable device into memory. The bootloader then takes over to load the operating system kernel.</li>
+<li><strong>Hardware Initialization:</strong><br> The BIOS initializes and configures hardware components, setting up basic operational parameters. This includes setting up the CPU, memory, and peripherals such as disk drives and video cards.</li>
+<li><strong>BIOS Setup Utility:</strong><br> The BIOS includes a setup utility that users can access to configure hardware settings, such as system time and date, boot sequence, and hardware parameters.</li>
+<li><strong>BIOS Services:</strong><br> The BIOS provides low-level routines that operating systems and programs can use to interact with hardware. These routines offer a standardized way for software to communicate with hardware devices without needing to know the details of the hardware.</li>
+</ol>
+<h4 id="BIOS-interrupt"><a href="#BIOS-interrupt" class="headerlink" title="BIOS interrupt"></a>BIOS interrupt</h4><p>It refer to invoke routines provided by the BIOS to the x86-based computer. It allows the CPU to <strong>switch from executing the current program to the routine provided by the BIOS.</strong><br><strong>Calling BIOS Interrupts:</strong></p>
+<ul>
+<li>To invoke a BIOS interrupt, software sets up registers with specific values, including the interrupt number (represented as an index into the IVT). Then, the software triggers the interrupt using the <strong><code>INT</code> instruction</strong>, which causes the CPU to transfer control to the corresponding ISR in the BIOS.<br><strong>Purpose and Usage:</strong></li>
+<li>BIOS interrupts are used to <strong>perform low-level operations</strong> that interact directly with hardware, such as disk I&#x2F;O, keyboard input, video display, system timer control, and system shutdown&#x2F;restart functions.</li>
+<li>They provide a standardized interface for software running in real mode to <strong>access these hardware functions</strong> without needing to know specific hardware details.</li>
+</ul>
+<h5 id="Example-of-BIOS-interrupt"><a href="#Example-of-BIOS-interrupt" class="headerlink" title="Example of BIOS interrupt"></a>Example of BIOS interrupt</h5><p><strong>INT 13h:</strong> Provides disk services, such as reading and writing sectors from&#x2F;to disk drives<br><strong>INT 15h:</strong> Provides system services, including memory allocation, system configuration query, and power management functions.</p>
+<h3 id="Bootloader"><a href="#Bootloader" class="headerlink" title="Bootloader"></a>Bootloader</h3><p>Bootloader is a program to load the operator system kernel into memory.</p>
+<h3 id="Functions-of-a-Bootloader"><a href="#Functions-of-a-Bootloader" class="headerlink" title="Functions of a Bootloader"></a>Functions of a Bootloader</h3><ol>
+<li><strong>Power-On Self-Test (POST):</strong><br>  When you turn on your computer, the Basic Input&#x2F;Output System (BIOS) or the Unified Extensible Firmware Interface (UEFI) performs a POST to check hardware components’ functionality.</li>
+<li><strong>Boot Device Detection:</strong><br> After the POST, the BIOS&#x2F;UEFI searches for a bootable device, such as a hard drive, SSD, USB drive, or CD&#x2F;DVD, based on the boot order specified in BIOS&#x2F;UEFI settings.</li>
+<li><strong>Loading the Bootloader:</strong><br> Once a bootable device is detected, the BIOS&#x2F;UEFI loads the initial bootloader program stored in a specific location on that device (e.g., the Master Boot Record or EFI System Partition).</li>
+<li><strong>Bootloader Execution:</strong><br> The bootloader program takes control, initializes hardware (if necessary), and allows the user to select which operating system or kernel to load if multiple options are available (e.g., dual-boot systems).</li>
+<li><strong>Loading the Kernel:</strong><br> The main task of the bootloader is to load the operating system kernel into memory. It reads the kernel file from the boot device and transfers control to the kernel, passing any necessary parameters.</li>
+<li><strong>Transition to Operating System:</strong><br>  Once the kernel is loaded and initialized, the operating system takes over and continues the boot process. The OS then loads necessary drivers, initializes system services, and presents the user with a login screen or desktop environment.</li>
+</ol>
+<div style="text-align: center;">
+  <img src="/2024/07/19/Load-kernel/load kernel.svg" alt="Image description" style="width: 100%;">
+  <p><b>Load kernel process</b></p>
+</div>
+
+<h4 id="LBA"><a href="#LBA" class="headerlink" title="LBA"></a>LBA</h4><p>LBA is commonly used in BIOS (Basic Input&#x2F;Output System) and operating systems to access data on hard drives, solid-state drives (SSDs), and other storage devices.<br>When reading or writing data to a disk using LBA, the operating system or application specifies the LBA address along with other parameters (such as the number of sectors to read&#x2F;write and the buffer address).</p>
+<h3 id="How-to-read-a-sector"><a href="#How-to-read-a-sector" class="headerlink" title="How to read a sector"></a>How to read a sector</h3><ol>
+<li><strong>Prepare Registers</strong>:<ul>
+<li><code>mov $0x42, %ah</code> sets <code>AH</code> to <code>0x42</code> to indicate the Extended Read function.</li>
+<li><code>mov %sp, %si</code> sets <code>SI</code> to point to the stack pointer, which will be used as the pointer to the data packet.</li>
+</ul>
+</li>
+<li><strong>Push [[Data packet]] onto the Stack</strong>:<ul>
+<li>Push the packet size (<code>16</code> bytes).</li>
+<li>Push the number of sectors to read (<code>1</code> sector).</li>
+<li>Push the buffer offset (<code>0</code>), which is the offset within the segment where data should be read into.</li>
+<li>Push the buffer segment (<code>ES</code>), which is the segment where data should be read into.</li>
+<li>Push the LBA address in three parts (high part, mid part, low part).</li>
+</ul>
+</li>
+<li><strong>Call BIOS Interrupt</strong>:<ul>
+<li><code>int $0x13</code> calls the BIOS interrupt to perform the Extended Read operation using the data packet.</li>
+</ul>
+</li>
+</ol>
+
+      
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -527,7 +659,7 @@
         <i class="far fa-calendar-check"></i>
       </span>
       <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-06-28 22:30:43" itemprop="dateModified" datetime="2024-06-28T22:30:43+08:00">2024-06-28</time>
+      <time title="Modified: 2024-07-08 19:13:01" itemprop="dateModified" datetime="2024-07-08T19:13:01+08:00">2024-07-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">

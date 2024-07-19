@@ -21,30 +21,30 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jerrylzjtom.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":330,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="费曼学习法是由著名物理学家、诺贝尔物理学奖得主理 查德·费曼提出的。其核心就是： 通过简短的语言，向别人清楚地解说一件事，来检验自己是否真的弄懂了这件事。费曼学习法可以简化为四个单词： concept（概念）、Teach（教给别人）、Review（评价）、Simplify（简化）。具体操作可概括四个步骤：">
+    <meta name="description" content="BIOSIt is a firmware that provide the necessary instruction for the computer to perform basic functions such as hardware initialization. Functions of the BIOS Power-On Self-Test (POST): When you turn">
 <meta property="og:type" content="article">
 <meta property="og:title" content="page.title">
-<meta property="og:url" content="https://jerrylzjtom.github.io/2024/06/28/%E8%B4%B9%E6%9B%BC%E5%AD%A6%E4%B9%A0%E6%B3%95/index.html">
+<meta property="og:url" content="https://jerrylzjtom.github.io/2024/07/19/Load-kernel/index.html">
 <meta property="og:site_name" content="杰瑞的小世界">
-<meta property="og:description" content="费曼学习法是由著名物理学家、诺贝尔物理学奖得主理 查德·费曼提出的。其核心就是： 通过简短的语言，向别人清楚地解说一件事，来检验自己是否真的弄懂了这件事。费曼学习法可以简化为四个单词： concept（概念）、Teach（教给别人）、Review（评价）、Simplify（简化）。具体操作可概括四个步骤：">
+<meta property="og:description" content="BIOSIt is a firmware that provide the necessary instruction for the computer to perform basic functions such as hardware initialization. Functions of the BIOS Power-On Self-Test (POST): When you turn">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="https://jerrylzjtom.github.io/2024/06/28/%E8%B4%B9%E6%9B%BC%E5%AD%A6%E4%B9%A0%E6%B3%95/1.jpeg">
-<meta property="article:published_time" content="2024-06-28T15:14:14.000Z">
-<meta property="article:modified_time" content="2024-06-28T15:18:53.466Z">
+<meta property="og:image" content="https://jerrylzjtom.github.io/2024/07/19/Load-kernel/load%20kernel.svg">
+<meta property="article:published_time" content="2024-07-19T15:11:37.000Z">
+<meta property="article:modified_time" content="2024-07-19T15:16:57.083Z">
 <meta property="article:author" content="Jerry-Lee">
 <meta property="article:tag" content="CS 国学 历史 诗词">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://jerrylzjtom.github.io/2024/06/28/%E8%B4%B9%E6%9B%BC%E5%AD%A6%E4%B9%A0%E6%B3%95/1.jpeg">
+<meta name="twitter:image" content="https://jerrylzjtom.github.io/2024/07/19/Load-kernel/load%20kernel.svg">
 
 
-<link rel="canonical" href="https://jerrylzjtom.github.io/2024/06/28/%E8%B4%B9%E6%9B%BC%E5%AD%A6%E4%B9%A0%E6%B3%95/">
+<link rel="canonical" href="https://jerrylzjtom.github.io/2024/07/19/Load-kernel/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jerrylzjtom.github.io/2024/06/28/%E8%B4%B9%E6%9B%BC%E5%AD%A6%E4%B9%A0%E6%B3%95/","path":"2024/06/28/费曼学习法/","title":"费曼学习法"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jerrylzjtom.github.io/2024/07/19/Load-kernel/","path":"2024/07/19/Load-kernel/","title":"Load Kernel"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>费曼学习法 | 杰瑞的小世界</title>
+<title>Load Kernel | 杰瑞的小世界</title>
   
 
 
@@ -123,7 +123,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E6%AD%A5%EF%BC%9A%E5%81%87%E8%A3%85%E6%8A%8A%E7%9F%A5%E8%AF%86%E3%80%81%E6%A6%82%E5%BF%B5%E6%95%99%E7%BB%99%E4%B8%80%E4%B8%AA%E5%B0%8F%E5%AD%A9%E5%AD%90"><span class="nav-number">1.</span> <span class="nav-text">第一步：假装把知识、概念教给一个小孩子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E6%AD%A5%EF%BC%9A%E5%9B%9E%E9%A1%BE"><span class="nav-number">2.</span> <span class="nav-text">第二步：回顾</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E4%B8%89%E6%AD%A5%EF%BC%9A%E5%B0%86%E8%AF%AD%E8%A8%80%E6%9D%A1%E7%90%86%E5%8C%96%E3%80%81%E7%AE%80%E6%B4%81%E5%8C%96"><span class="nav-number">3.</span> <span class="nav-text">第三步：将语言条理化、简洁化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E6%AD%A5%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89%EF%BC%9A%E4%BC%A0%E6%8E%88"><span class="nav-number">4.</span> <span class="nav-text">第四步（可选）：传授</span></a></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#BIOS"><span class="nav-number">1.</span> <span class="nav-text">BIOS</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Functions-of-the-BIOS"><span class="nav-number">1.1.</span> <span class="nav-text">Functions of the BIOS</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#BIOS-interrupt"><span class="nav-number">1.2.</span> <span class="nav-text">BIOS interrupt</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#Example-of-BIOS-interrupt"><span class="nav-number">1.2.1.</span> <span class="nav-text">Example of BIOS interrupt</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Bootloader"><span class="nav-number">2.</span> <span class="nav-text">Bootloader</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Functions-of-a-Bootloader"><span class="nav-number">3.</span> <span class="nav-text">Functions of a Bootloader</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#LBA"><span class="nav-number">3.1.</span> <span class="nav-text">LBA</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#How-to-read-a-sector"><span class="nav-number">4.</span> <span class="nav-text">How to read a sector</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -220,7 +220,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jerrylzjtom.github.io/2024/06/28/%E8%B4%B9%E6%9B%BC%E5%AD%A6%E4%B9%A0%E6%B3%95/">
+    <link itemprop="mainEntityOfPage" href="https://jerrylzjtom.github.io/2024/07/19/Load-kernel/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/images.jpg">
@@ -233,12 +233,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="费曼学习法 | 杰瑞的小世界">
+      <meta itemprop="name" content="Load Kernel | 杰瑞的小世界">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          费曼学习法
+          Load Kernel
         </h1>
 
         <div class="post-meta-container">
@@ -250,7 +250,16 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2024-06-28 23:14:14 / Modified: 23:18:53" itemprop="dateCreated datePublished" datetime="2024-06-28T23:14:14+08:00">2024-06-28</time>
+      <time title="Created: 2024-07-19 23:11:37 / Modified: 23:16:57" itemprop="dateCreated datePublished" datetime="2024-07-19T23:11:37+08:00">2024-07-19</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Operator-System/" itemprop="url" rel="index"><span itemprop="name">Operator System</span></a>
+        </span>
     </span>
 
   
@@ -265,8 +274,8 @@
 
         </div>
 
-        <span title="post.wordcount">789 词 </span>
-        <span title="post.min2read">2 分钟 </span>
+        <span title="post.wordcount">806 词 </span>
+        <span title="post.min2read">5 分钟 </span>
 
 
       </header>
@@ -274,19 +283,55 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>费曼学习法是由著名物理学家、诺贝尔物理学奖得主理 查德·费曼提出的。其核心就是： 通过简短的语言，向别人清楚地解说一件事，来检验自己是否真的弄懂了这件事。<br>费曼学习法可以简化为四个单词： concept（概念）、Teach（教给别人）、Review（评价）、Simplify（简化）。具体操作可概括四个步骤：</p>
-<span id="more"></span>
-
-
+    <div class="post-body" itemprop="articleBody"><h3 id="BIOS"><a href="#BIOS" class="headerlink" title="BIOS"></a>BIOS</h3><p>It is a firmware that provide the necessary instruction for the computer to perform basic functions such as hardware initialization.</p>
+<h4 id="Functions-of-the-BIOS"><a href="#Functions-of-the-BIOS" class="headerlink" title="Functions of the BIOS"></a>Functions of the BIOS</h4><ol>
+<li><strong>Power-On Self-Test (POST):</strong><br> When you turn on your computer, the BIOS performs a POST to check that all the necessary hardware components (like memory, keyboard, and storage devices) are functioning correctly.</li>
+<li><strong>Bootloader Execution:</strong><br>  After the POST, the BIOS looks for a bootable device (like a hard drive, SSD, USB drive, or CD&#x2F;DVD) and loads the bootloader from the bootable device into memory. The bootloader then takes over to load the operating system kernel.</li>
+<li><strong>Hardware Initialization:</strong><br> The BIOS initializes and configures hardware components, setting up basic operational parameters. This includes setting up the CPU, memory, and peripherals such as disk drives and video cards.</li>
+<li><strong>BIOS Setup Utility:</strong><br> The BIOS includes a setup utility that users can access to configure hardware settings, such as system time and date, boot sequence, and hardware parameters.</li>
+<li><strong>BIOS Services:</strong><br> The BIOS provides low-level routines that operating systems and programs can use to interact with hardware. These routines offer a standardized way for software to communicate with hardware devices without needing to know the details of the hardware.</li>
+</ol>
+<h4 id="BIOS-interrupt"><a href="#BIOS-interrupt" class="headerlink" title="BIOS interrupt"></a>BIOS interrupt</h4><p>It refer to invoke routines provided by the BIOS to the x86-based computer. It allows the CPU to <strong>switch from executing the current program to the routine provided by the BIOS.</strong><br><strong>Calling BIOS Interrupts:</strong></p>
+<ul>
+<li>To invoke a BIOS interrupt, software sets up registers with specific values, including the interrupt number (represented as an index into the IVT). Then, the software triggers the interrupt using the <strong><code>INT</code> instruction</strong>, which causes the CPU to transfer control to the corresponding ISR in the BIOS.<br><strong>Purpose and Usage:</strong></li>
+<li>BIOS interrupts are used to <strong>perform low-level operations</strong> that interact directly with hardware, such as disk I&#x2F;O, keyboard input, video display, system timer control, and system shutdown&#x2F;restart functions.</li>
+<li>They provide a standardized interface for software running in real mode to <strong>access these hardware functions</strong> without needing to know specific hardware details.</li>
+</ul>
+<h5 id="Example-of-BIOS-interrupt"><a href="#Example-of-BIOS-interrupt" class="headerlink" title="Example of BIOS interrupt"></a>Example of BIOS interrupt</h5><p><strong>INT 13h:</strong> Provides disk services, such as reading and writing sectors from&#x2F;to disk drives<br><strong>INT 15h:</strong> Provides system services, including memory allocation, system configuration query, and power management functions.</p>
+<h3 id="Bootloader"><a href="#Bootloader" class="headerlink" title="Bootloader"></a>Bootloader</h3><p>Bootloader is a program to load the operator system kernel into memory.</p>
+<h3 id="Functions-of-a-Bootloader"><a href="#Functions-of-a-Bootloader" class="headerlink" title="Functions of a Bootloader"></a>Functions of a Bootloader</h3><ol>
+<li><strong>Power-On Self-Test (POST):</strong><br>  When you turn on your computer, the Basic Input&#x2F;Output System (BIOS) or the Unified Extensible Firmware Interface (UEFI) performs a POST to check hardware components’ functionality.</li>
+<li><strong>Boot Device Detection:</strong><br> After the POST, the BIOS&#x2F;UEFI searches for a bootable device, such as a hard drive, SSD, USB drive, or CD&#x2F;DVD, based on the boot order specified in BIOS&#x2F;UEFI settings.</li>
+<li><strong>Loading the Bootloader:</strong><br> Once a bootable device is detected, the BIOS&#x2F;UEFI loads the initial bootloader program stored in a specific location on that device (e.g., the Master Boot Record or EFI System Partition).</li>
+<li><strong>Bootloader Execution:</strong><br> The bootloader program takes control, initializes hardware (if necessary), and allows the user to select which operating system or kernel to load if multiple options are available (e.g., dual-boot systems).</li>
+<li><strong>Loading the Kernel:</strong><br> The main task of the bootloader is to load the operating system kernel into memory. It reads the kernel file from the boot device and transfers control to the kernel, passing any necessary parameters.</li>
+<li><strong>Transition to Operating System:</strong><br>  Once the kernel is loaded and initialized, the operating system takes over and continues the boot process. The OS then loads necessary drivers, initializes system services, and presents the user with a login screen or desktop environment.</li>
+</ol>
 <div style="text-align: center;">
-  <img src="/2024/06/28/%E8%B4%B9%E6%9B%BC%E5%AD%A6%E4%B9%A0%E6%B3%95/1.jpeg" alt="Image description" style="width: 50%;">
+  <img src="/2024/07/19/Load-kernel/load kernel.svg" alt="Image description" style="width: 100%;">
+  <p><b>Load kernel process</b></p>
 </div>
 
-
-<h2 id="第一步：假装把知识、概念教给一个小孩子"><a href="#第一步：假装把知识、概念教给一个小孩子" class="headerlink" title="第一步：假装把知识、概念教给一个小孩子"></a>第一步：假装把知识、概念教给一个小孩子</h2><p>拿出一张白纸，在上方写下你想要学习的主题。想一下，如果你要把它教给一个孩子，你会讲哪些，并写下来。这里你的教授对象不是你自己那些聪明的成年朋友，而是一个8岁的孩子，他的词汇量和注意力刚好能够理解基本概念和关系。<br>许多人会倾向于使用复杂的词汇和行话来掩盖他们不明白的东西。问题是我们只在糊弄自己，因为我们不知道自己也不明白。另外，使用行话会隐藏周围人对我们的误解。<br>当你自始至终都用孩子可以理解的简单的语言写出一个想法（提示：只用最常见的单词），那么你便迫使自己在更深层次上理解了该概念，并简化了观点之间的关系和联系。如果你努力，就会清楚地知道自己在哪里还有不明白的地方。这种紧张状态很好——预示着学习的机会到来了。</p>
-<h2 id="第二步：回顾"><a href="#第二步：回顾" class="headerlink" title="第二步：回顾"></a>第二步：回顾</h2><p>在第一步中，你不可避免地会卡壳，忘记重要的点，不能解释，或者说不能将重要的概念联系起来。<br>这一反馈相当宝贵，因为你已经发现了自己知识的边缘。懂得自己能力的界限也是一种能力，你刚刚就确定了一个！<br>这是学习开始的地方。现在你知道自己在哪里卡住了，那么就回到原始材料，重新学习，直到你可以用基本的术语解释这一概念。<br>认定自己知识的界限，会限制你可能犯的错误，并且在应用该知识时，可以增加成功的几率。</p>
-<h2 id="第三步：将语言条理化、简洁化"><a href="#第三步：将语言条理化、简洁化" class="headerlink" title="第三步：将语言条理化、简洁化"></a>第三步：将语言条理化、简洁化</h2><p>现在你手上有一套自己手写笔记，检查一下确保自己没有从原材料中借用任何行话。将这些笔记用简单的语言组织成一个流畅的故事。<br>将这个故事大声读出来，如果这些解释不够简单，或者听起来比较混乱，很好，这意味着你想要理解该领域，还需要做一些工作。</p>
-<h2 id="第四步（可选）：传授"><a href="#第四步（可选）：传授" class="headerlink" title="第四步（可选）：传授"></a>第四步（可选）：传授</h2><p>如果你真的想确保你的理解没什么问题，就把它教给另一个人（理想状态下，这个人应该对这个话题知之甚少，或者就找个 8 岁的孩子）。 检测知识最终的途径是你能有能力把它传播给另一个人。</p>
+<h4 id="LBA"><a href="#LBA" class="headerlink" title="LBA"></a>LBA</h4><p>LBA is commonly used in BIOS (Basic Input&#x2F;Output System) and operating systems to access data on hard drives, solid-state drives (SSDs), and other storage devices.<br>When reading or writing data to a disk using LBA, the operating system or application specifies the LBA address along with other parameters (such as the number of sectors to read&#x2F;write and the buffer address).</p>
+<h3 id="How-to-read-a-sector"><a href="#How-to-read-a-sector" class="headerlink" title="How to read a sector"></a>How to read a sector</h3><ol>
+<li><strong>Prepare Registers</strong>:<ul>
+<li><code>mov $0x42, %ah</code> sets <code>AH</code> to <code>0x42</code> to indicate the Extended Read function.</li>
+<li><code>mov %sp, %si</code> sets <code>SI</code> to point to the stack pointer, which will be used as the pointer to the data packet.</li>
+</ul>
+</li>
+<li><strong>Push [[Data packet]] onto the Stack</strong>:<ul>
+<li>Push the packet size (<code>16</code> bytes).</li>
+<li>Push the number of sectors to read (<code>1</code> sector).</li>
+<li>Push the buffer offset (<code>0</code>), which is the offset within the segment where data should be read into.</li>
+<li>Push the buffer segment (<code>ES</code>), which is the segment where data should be read into.</li>
+<li>Push the LBA address in three parts (high part, mid part, low part).</li>
+</ul>
+</li>
+<li><strong>Call BIOS Interrupt</strong>:<ul>
+<li><code>int $0x13</code> calls the BIOS interrupt to perform the Extended Read operation using the data packet.</li>
+</ul>
+</li>
+</ol>
 
     </div>
 
@@ -304,7 +349,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="https://jerrylzjtom.github.io/2024/06/28/%E8%B4%B9%E6%9B%BC%E5%AD%A6%E4%B9%A0%E6%B3%95/" title="费曼学习法">https://jerrylzjtom.github.io/2024/06/28/费曼学习法/</a>
+      <a href="https://jerrylzjtom.github.io/2024/07/19/Load-kernel/" title="Load Kernel">https://jerrylzjtom.github.io/2024/07/19/Load-kernel/</a>
   </li>
   <li class="post-copyright-license">
       <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -317,14 +362,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
-                <a href="/2024/06/27/KDTree/" rel="prev" title="KDTree">
-                  <i class="fa fa-angle-left"></i> KDTree
+                <a href="/2024/07/03/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%AF%BC%E8%AE%BA-ostep-%E7%AC%94%E8%AE%B0/" rel="prev" title="操作系统导论(Ostep)笔记">
+                  <i class="fa fa-angle-left"></i> 操作系统导论(Ostep)笔记
                 </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/07/02/CSAPP%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/" rel="next" title="CSAPP学习笔记">
-                  CSAPP学习笔记 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
