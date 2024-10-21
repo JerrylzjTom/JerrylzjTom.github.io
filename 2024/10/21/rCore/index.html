@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222"><meta name="generator" content="Hexo 7.2.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Noto+Serif:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=Noto+Serif+SC:wght@200..900&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jerrylzjtom.github.io","root":"/","images":"/images","scheme":"Mist","darkmode":false,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":330,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":false,"height":500},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":true,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":"disqus","storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Privilege level SwitchSystem call and Function callOverview Function call is running in user mode, using the user source, and there is no need for privilege switching and context restoring.  System ca">
+<meta property="og:type" content="article">
+<meta property="og:title" content="page.title">
+<meta property="og:url" content="https://jerrylzjtom.github.io/2024/10/21/rCore/index.html">
+<meta property="og:site_name" content="杰瑞的小世界">
+<meta property="og:description" content="Privilege level SwitchSystem call and Function callOverview Function call is running in user mode, using the user source, and there is no need for privilege switching and context restoring.  System ca">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://jerrylzjtom.github.io/image.png">
+<meta property="og:image" content="https://jerrylzjtom.github.io/image-1.png">
+<meta property="og:image" content="https://jerrylzjtom.github.io/image-3.png">
+<meta property="article:published_time" content="2024-10-21T11:36:18.000Z">
+<meta property="article:modified_time" content="2024-10-21T11:36:18.241Z">
+<meta property="article:author" content="Jerry-Lee">
+<meta property="article:tag" content="rCore">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://jerrylzjtom.github.io/image.png">
+
+
+<link rel="canonical" href="https://jerrylzjtom.github.io/2024/10/21/rCore/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jerrylzjtom.github.io/2024/10/21/rCore/","path":"2024/10/21/rCore/","title":"特权级机制与特权级切换"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>特权级机制与特权级切换 | 杰瑞的小世界</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+
+  
+  <script type="text/javascript"
+  src="//cdn.bootcss.com/canvas-nest.js/1.0.0/canvas-nest.min.js">
+  </script>
+  
+  
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">杰瑞的小世界</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-首页"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-随笔"><a href="/%E9%9A%8F%E7%AC%94/" rel="section"><i class="fa-solid fa-pen fa-fw"></i>随笔</a></li><li class="menu-item menu-item-项目"><a href="/%E9%A1%B9%E7%9B%AE/" rel="section"><i class="fa-solid fa-book fa-fw"></i>项目</a></li><li class="menu-item menu-item-阅读清单"><a href="/%E9%98%85%E8%AF%BB%E6%B8%85%E5%8D%95/" rel="section"><i class="fa fa-tags fa-fw"></i>阅读清单</a></li><li class="menu-item menu-item-诗词"><a href="/%E8%AF%97%E8%AF%8D/" rel="section"><i class="fa fa-archive fa-fw"></i>诗词</a></li>
+  </ul>
+</nav>
+
+
+
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Privilege-level-Switch"><span class="nav-number">1.</span> <span class="nav-text">Privilege level Switch</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#System-call-and-Function-call"><span class="nav-number">1.1.</span> <span class="nav-text">System call and Function call</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Overview"><span class="nav-number">1.1.1.</span> <span class="nav-text">Overview</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#System-call"><span class="nav-number">1.1.2.</span> <span class="nav-text">System call</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ASIDE-WHY-SYSTEM-CALLS-LOOK-LIKE-PROCEDURE-CALLS"><span class="nav-number">1.1.3.</span> <span class="nav-text">ASIDE: WHY SYSTEM CALLS LOOK LIKE PROCEDURE CALLS</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Trap-Management"><span class="nav-number">1.2.</span> <span class="nav-text">Trap Management</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Trap-context"><span class="nav-number">1.2.1.</span> <span class="nav-text">Trap context</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#User-Stack-and-Kernel-Stack"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">User Stack and Kernel Stack</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Structure"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">Structure</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Save-and-Restore-Trap-context"><span class="nav-number">1.2.2.</span> <span class="nav-text">Save and Restore Trap context</span></a></li></ol></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jerry-Lee"
+      src="/images/images.jpg">
+  <p class="site-author-name" itemprop="name">Jerry-Lee</p>
+  <div class="site-description" itemprop="description">有匪君子，如切如磋，如琢如磨</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JerrylzjTom" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JerrylzjTom" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:Jerrylzj0808@outlook.com" title="E-Mail → mailto:Jerrylzj0808@outlook.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/jerrylzj123" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;jerrylzj123" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i></a>
+      </span>
+  </div>
+
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<div id="poem_sentence"></div>
+<div id="poem_info"></div>
+<script type="text/javascript">
+  jinrishici.load(function(result) {
+    var sentence = document.querySelector("#poem_sentence")
+    var info = document.querySelector("#poem_info")
+    sentence.innerHTML = result.data.content
+    info.innerHTML = '【' + result.data.origin.dynasty + '】' + result.data.origin.author + '《' + result.data.origin.title + '》'
+  });
+</script>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+        </div>
+      </div>
+    </div>
+
+    
+    <div class="sidebar-inner sidebar-blogroll">
+      <div class="links-of-blogroll animated">
+        <div class="links-of-blogroll-title"><i class="fa fa-globe fa-fw"></i>
+          Links
+        </div>
+        <ul class="links-of-blogroll-list">
+            <li class="links-of-blogroll-item">
+              <a href="https://hellogithub.com/article/ec1c37c4204b485bb9e41894a4a13671" title="https:&#x2F;&#x2F;hellogithub.com&#x2F;article&#x2F;ec1c37c4204b485bb9e41894a4a13671" rel="noopener" target="_blank">什么是真正的程序员？</a>
+            </li>
+            <li class="links-of-blogroll-item">
+              <a href="https://csdiy.wiki/" title="https:&#x2F;&#x2F;csdiy.wiki&#x2F;" rel="noopener" target="_blank">CS自学指南</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+        <div class="sidebar-inner sidebar-post-related">
+          <div class="animated">
+              <div class="links-of-blogroll-title"><i class="fa fa-signs-post fa-fw"></i>
+    Related Posts
+  </div>
+  <ul class="popular-posts">
+    <li class="popular-posts-item">
+      <a class="popular-posts-link" href="/2024/07/19/Load-kernel/" rel="bookmark">
+        <time class="popular-posts-time">2024-07-19</time>
+        <br>
+      Load Kernel
+      </a>
+    </li>
+  </ul>
+
+          </div>
+        </div>
+
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jerrylzjtom.github.io/2024/10/21/rCore/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/images.jpg">
+      <meta itemprop="name" content="Jerry-Lee">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="杰瑞的小世界">
+      <meta itemprop="description" content="有匪君子，如切如磋，如琢如磨">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="特权级机制与特权级切换 | 杰瑞的小世界">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          特权级机制与特权级切换
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+
+      <time title="Created: 2024-10-21 19:36:18" itemprop="dateCreated datePublished" datetime="2024-10-21T19:36:18+08:00">2024-10-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/Operator-System/" itemprop="url" rel="index"><span itemprop="name">Operator System</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+
+        <span title="post.wordcount">1.2k 词 </span>
+        <span title="post.min2read">7 分钟 </span>
+
+
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="Privilege-level-Switch"><a href="#Privilege-level-Switch" class="headerlink" title="Privilege level Switch"></a>Privilege level Switch</h1><h2 id="System-call-and-Function-call"><a href="#System-call-and-Function-call" class="headerlink" title="System call and Function call"></a>System call and Function call</h2><h3 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a>Overview</h3><ul>
+<li>Function call is running in user mode, using the user source, and there is no need for privilege switching and context restoring. </li>
+<li>System call is the request from user mode to higher privilege mode, for getting into system to use kernel source such as I&#x2F;O device, network interface.</li>
+</ul>
+<h3 id="System-call"><a href="#System-call" class="headerlink" title="System call"></a>System call</h3><p>System call is the ABI(Application Binary Interface), which provide interface for U mode to use OS source. The follow is the process of system call:</p>
+<ol>
+<li>The user program prepares for system call by loading the system call number and the arguments that needed in predefined registers(a7: system call number, a0~a6: Hold arguments of system call, a0 also hold the return value from the system call)</li>
+<li>After that, user program issue the <em>ecall</em> instruction. After the ecall executed, a trap occurs, and the trap context switch performs. The CPU transfers control to the operating system’s trap handler. The trap handler use the sscause and system call number in a7 to execute requested system call. Once the system call is completed, the return value (if any) is placed in register a0.</li>
+<li>Finally,  restore user context to return user mode.</li>
+</ol>
+<p><img src="/image.png" alt="alt text"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">.section .data</span><br><span class="line">message:</span><br><span class="line">    .asciz &quot;Hello, World!\n&quot;</span><br><span class="line"></span><br><span class="line">.section .text</span><br><span class="line">.globl _start</span><br><span class="line">_start:</span><br><span class="line">    # System call to write</span><br><span class="line">    li a7, 64          # Load system call number for &#x27;write&#x27; (64) into a7</span><br><span class="line">    li a0, 1           # File descriptor 1 (stdout) into a0</span><br><span class="line">    la a1, message     # Load address of message into a1</span><br><span class="line">    li a2, 14          # Message length (14 bytes) into a2</span><br><span class="line">    ecall              # Issue the system call</span><br><span class="line"></span><br><span class="line">    # System call to exit</span><br><span class="line">    li a7, 93          # Load system call number for &#x27;exit&#x27; (93) into a7</span><br><span class="line">    li a0, 0           # Exit code 0 into a0</span><br><span class="line">    ecall              # Issue the system call</span><br></pre></td></tr></table></figure>
+
+<h3 id="ASIDE-WHY-SYSTEM-CALLS-LOOK-LIKE-PROCEDURE-CALLS"><a href="#ASIDE-WHY-SYSTEM-CALLS-LOOK-LIKE-PROCEDURE-CALLS" class="headerlink" title="ASIDE: WHY SYSTEM CALLS LOOK LIKE PROCEDURE CALLS"></a>ASIDE: WHY SYSTEM CALLS LOOK LIKE PROCEDURE CALLS</h3><p>You may wonder why a call to a system call, such as open() or read(), looks exactly like a typical procedure call in C; that is, if it looks just like a procedure call, how does the system know it’s a system call, and do all the right stuff? The simple reason: it is a procedure call, but hidden inside that procedure call is the famous trap instruction. More specifically, when you call open() (for example), you are executing a procedure call into the C library. Therein, whether for open() or any of the other system calls provided, the library uses an agreed-upon calling convention with the kernel to put the arguments to open in well-known locations (e.g., on the stack, or in specific registers), puts the system-call number into a well-known location as well (again, onto the stack or a register), and then executes the aforementioned trap instruction. The code in the library after the trap unpacks return values and returns control to the program that issued the system call. Thus, the parts of the C library that make system calls are hand-coded in assembly, as they need to carefully follow convention in order to process arguments and return values correctly, as well as execute the hardware-specific trap instruction. And now you know why you personally don’t have to write assembly code to trap into an OS; somebody has already written that assembly for you.</p>
+<h2 id="Trap-Management"><a href="#Trap-Management" class="headerlink" title="Trap Management"></a>Trap Management</h2><p>When user program issues the <em>ecall</em> instruction, it trigger the trap execution to switch the processor from user mode to supervisor mode.<br>Then the first step is to find the trap handler entry address to jump to.<br>To do this, the kernel set the <em>trap table</em> at boot time. </p>
+<p>In rCore, at boot time, trap entry address is set by </p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// initialize CSR `stvec` as the entry of `__alltraps`</span></span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">fn</span> <span class="title function_">init</span>() &#123;</span><br><span class="line">    <span class="keyword">extern</span> <span class="string">&quot;C&quot;</span> &#123;</span><br><span class="line">        <span class="keyword">fn</span> <span class="title function_">__alltraps</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">unsafe</span> &#123;</span><br><span class="line">        stvec::<span class="title function_ invoke__">write</span>(__alltraps <span class="keyword">as</span> <span class="type">usize</span>, TrapMode::Direct);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>There is only a single trap entry <em>_alltraps</em>. All traps get into <em>_alltraps</em> to do trap context save and load and run different functionality base on what exception was(sscause).</p>
+<figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// handle an interrupt, exception, or system call from user space</span></span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">fn</span> <span class="title function_">trap_handler</span>(cx: &amp;<span class="keyword">mut</span> TrapContext) <span class="punctuation">-&gt;</span> &amp;<span class="keyword">mut</span> TrapContext &#123;</span><br><span class="line">    <span class="keyword">let</span> <span class="variable">scause</span> = scause::<span class="title function_ invoke__">read</span>(); <span class="comment">// get trap cause</span></span><br><span class="line">    <span class="keyword">let</span> <span class="variable">stval</span> = stval::<span class="title function_ invoke__">read</span>(); <span class="comment">// get extra value</span></span><br><span class="line">    <span class="keyword">match</span> scause.<span class="title function_ invoke__">cause</span>() &#123;</span><br><span class="line">        Trap::<span class="title function_ invoke__">Exception</span>(Exception::UserEnvCall) =&gt; &#123;</span><br><span class="line">            cx.sepc += <span class="number">4</span>;</span><br><span class="line">            cx.x[<span class="number">10</span>] = <span class="title function_ invoke__">syscall</span>(cx.x[<span class="number">17</span>], [cx.x[<span class="number">10</span>], cx.x[<span class="number">11</span>], cx.x[<span class="number">12</span>]]) <span class="keyword">as</span> <span class="type">usize</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        Trap::<span class="title function_ invoke__">Exception</span>(Exception::StoreFault) | Trap::<span class="title function_ invoke__">Exception</span>(Exception::StorePageFault) =&gt; &#123;</span><br><span class="line">            <span class="built_in">println!</span>(<span class="string">&quot;[kernel] PageFault in application, kernel killed it.&quot;</span>);</span><br><span class="line">            <span class="title function_ invoke__">run_next_app</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        Trap::<span class="title function_ invoke__">Exception</span>(Exception::IllegalInstruction) =&gt; &#123;</span><br><span class="line">            <span class="built_in">println!</span>(<span class="string">&quot;[kernel] IllegalInstruction in application, kernel killed it.&quot;</span>);</span><br><span class="line">            <span class="title function_ invoke__">run_next_app</span>();</span><br><span class="line">        &#125;</span><br><span class="line">        _ =&gt; &#123;</span><br><span class="line">            <span class="built_in">panic!</span>(</span><br><span class="line">                <span class="string">&quot;Unsupported trap &#123;:?&#125;, stval = &#123;:#x&#125;!&quot;</span>,</span><br><span class="line">                scause.<span class="title function_ invoke__">cause</span>(),</span><br><span class="line">                stval</span><br><span class="line">            );</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    cx</span><br></pre></td></tr></table></figure>
+<h3 id="Trap-context"><a href="#Trap-context" class="headerlink" title="Trap context"></a>Trap context</h3><h4 id="User-Stack-and-Kernel-Stack"><a href="#User-Stack-and-Kernel-Stack" class="headerlink" title="User Stack and Kernel Stack"></a>User Stack and Kernel Stack</h4><table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>User Stack</th>
+<th>Kernel Stack</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>Privilege Level</strong></td>
+<td>Used in user mode (low-privilege).</td>
+<td>Used in kernel mode (high-privilege).</td>
+</tr>
+<tr>
+<td><strong>Access Control</strong></td>
+<td>Only accessible to the process in user mode.</td>
+<td>Only accessible when in kernel mode.</td>
+</tr>
+<tr>
+<td><strong>Memory Location</strong></td>
+<td>Part of user process memory (virtual memory).</td>
+<td>Part of the kernel memory (not accessible to user processes).</td>
+</tr>
+<tr>
+<td><strong>Switching</strong></td>
+<td>Active when process runs in user mode.</td>
+<td>Active when process switches to kernel mode (via system calls, interrupts, exceptions).</td>
+</tr>
+<tr>
+<td><strong>Size</strong></td>
+<td>Larger, typically grows dynamically.</td>
+<td>Smaller, fixed size, often just a few kilobytes.</td>
+</tr>
+<tr>
+<td><strong>Protection</strong></td>
+<td>Protected by the OS to prevent corruption.</td>
+<td>Protected from user process access.</td>
+</tr>
+</tbody></table>
+<h4 id="Structure"><a href="#Structure" class="headerlink" title="Structure"></a>Structure</h4><figure class="highlight rust"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/// Trap Context</span></span><br><span class="line"><span class="meta">#[repr(C)]</span></span><br><span class="line"><span class="keyword">pub</span> <span class="keyword">struct</span> <span class="title class_">TrapContext</span> &#123;</span><br><span class="line">    <span class="comment">/// general regs[0..31]</span></span><br><span class="line">    <span class="keyword">pub</span> x: [<span class="type">usize</span>; <span class="number">32</span>],</span><br><span class="line">    <span class="comment">/// CSR sstatus      </span></span><br><span class="line">    <span class="keyword">pub</span> sstatus: Sstatus,</span><br><span class="line">    <span class="comment">/// CSR sepc</span></span><br><span class="line">    <span class="keyword">pub</span> sepc: <span class="type">usize</span>,</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/image-1.png" alt="alt text"><br>Why should save <em>sstatus</em> and <em>spec</em> register?<br><img src="/image-3.png" alt="alt text"><br><em>sstatus</em> used to back to the mode before trap.<br><em>spec</em> save the last instruction before trap, which used to continue user program(PC is set sepc) after issued <em>sret</em> return user mode.   </p>
+<h3 id="Save-and-Restore-Trap-context"><a href="#Save-and-Restore-Trap-context" class="headerlink" title="Save and Restore Trap context"></a>Save and Restore Trap context</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"># os/src/trap/trap.S</span><br><span class="line"></span><br><span class="line">.macro SAVE_GP n</span><br><span class="line">    sd x\n, \n*8(sp)</span><br><span class="line">.endm</span><br><span class="line"></span><br><span class="line">.align 2</span><br><span class="line">__alltraps:</span><br><span class="line">    csrrw sp, sscratch, sp</span><br><span class="line">    # now sp-&gt;kernel stack, sscratch-&gt;user stack</span><br><span class="line">    # allocate a TrapContext on kernel stack</span><br><span class="line">    addi sp, sp, -34*8</span><br><span class="line">    # save general-purpose registers</span><br><span class="line">    sd x1, 1*8(sp)</span><br><span class="line">    # skip sp(x2), we will save it later</span><br><span class="line">    sd x3, 3*8(sp)</span><br><span class="line">    # skip tp(x4), application does not use it</span><br><span class="line">    # save x5~x31</span><br><span class="line">    .set n, 5</span><br><span class="line">    .rept 27</span><br><span class="line">        SAVE_GP %n</span><br><span class="line">        .set n, n+1</span><br><span class="line">    .endr</span><br><span class="line">    # we can use t0/t1/t2 freely, because they were saved on kernel stack</span><br><span class="line">    csrr t0, sstatus</span><br><span class="line">    csrr t1, sepc</span><br><span class="line">    sd t0, 32*8(sp)</span><br><span class="line">    sd t1, 33*8(sp)</span><br><span class="line">    # read user stack from sscratch and save it on the kernel stack</span><br><span class="line">    csrr t2, sscratch</span><br><span class="line">    sd t2, 2*8(sp)</span><br><span class="line">    # set input argument of trap_handler(cx: &amp;mut TrapContext)</span><br><span class="line">    mv a0, sp</span><br><span class="line">    call trap_handler</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">__restore:</span><br><span class="line">    # case1: start running app by __restore</span><br><span class="line">    # case2: back to U after handling trap</span><br><span class="line">    mv sp, a0</span><br><span class="line">    # now sp-&gt;kernel stack(after allocated), sscratch-&gt;user stack</span><br><span class="line">    # restore sstatus/sepc</span><br><span class="line">    ld t0, 32*8(sp)</span><br><span class="line">    ld t1, 33*8(sp)</span><br><span class="line">    ld t2, 2*8(sp)</span><br><span class="line">    csrw sstatus, t0</span><br><span class="line">    csrw sepc, t1</span><br><span class="line">    csrw sscratch, t2</span><br><span class="line">    # restore general-purpuse registers except sp/tp</span><br><span class="line">    ld x1, 1*8(sp)</span><br><span class="line">    ld x3, 3*8(sp)</span><br><span class="line">    .set n, 5</span><br><span class="line">    .rept 27</span><br><span class="line">        LOAD_GP %n</span><br><span class="line">        .set n, n+1</span><br><span class="line">    .endr</span><br><span class="line">    # release TrapContext on kernel stack</span><br><span class="line">    addi sp, sp, 34*8</span><br><span class="line">    # now sp-&gt;kernel stack, sscratch-&gt;user stack</span><br><span class="line">    csrrw sp, sscratch, sp</span><br><span class="line">    sret</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Jerry-Lee
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://jerrylzjtom.github.io/2024/10/21/rCore/" title="特权级机制与特权级切换">https://jerrylzjtom.github.io/2024/10/21/rCore/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/rCore/" rel="tag"><i class="fa fa-tag"></i> rCore</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/07/20/AVL-Tree/" rel="prev" title="AVL Tree">
+                  <i class="fa fa-angle-left"></i> AVL Tree
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">JerryLee</span>
+  </div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+
+
+<!-- 诗词设置 -->
+<script src="https://sdk.jinrishici.com/v2/browser/jinrishici.js" charset="utf-8"></script>
+<div id="poem_sentence_footer"></div>
+<div id="poem_info_footer"></div>
+<script type="text/javascript">
+  jinrishici.load(function(result) {
+    var sentence = document.querySelector("#poem_sentence_footer")
+    var info = document.querySelector("#poem_info_footer")
+    sentence.innerHTML = result.data.content
+    info.innerHTML = '【' + result.data.origin.dynasty + '】' + result.data.origin.author + '《' + result.data.origin.title + '》'
+  });
+</script>
+
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<span id="times">载入时分秒...</span>
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("06/27/2024 15:54:40");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;}
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 ";
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+
+  <a href="https://github.com/JerrylzjTom" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/medium-zoom/1.1.0/medium-zoom.min.js" integrity="sha256-ZgMyDAIYDYGxbcpJcfUnYwNevG/xi9OHKaR/8GK+jWc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js","integrity":"sha256-stuqcu2FrjYCXDOytWFA5SoUE/r3nkp6gTglzNSlavU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body>
+</html>
